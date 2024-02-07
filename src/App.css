@@ -19,3 +19,12 @@ body {
 .css-heg063-MuiTabs-flexContainer {
   justify-content: space-evenly;
 }
+
+/* styles for product list table */
+.css-lof2az{
+    width: 95% !important;
+    margin-inline: auto !important;
+}
+.css-t5z10y-MuiPaper-root-MuiTableContainer-root{
+    border:1px solid #d2dbdd;
+}
