@@ -1,3 +1,21 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+/* styles for mobile screen bottom tabs */
+.css-8p75qc-MuiTabs-root,.css-u438lk-MuiTabs-root {
+  width: 100%;
+}
+.css-heg063-MuiTabs-flexContainer {
+  justify-content: space-evenly;
+}
