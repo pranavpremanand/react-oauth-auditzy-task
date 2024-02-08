@@ -6,10 +6,12 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Sidebar } from "./components/Sidebar/Sidbar";
 import Products from "./pages/Products/Products";
 import { ProtectRoute, PublicRoute } from "./components/ProtectRoutes";
-import AddProduct from "./pages/AddProduct/AddProduct";
-import {Toaster} from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { LoadingSpinner } from "./components/LoadingSpinner";
 
 function App() {
+  const { isLoading } = useSelector((state) => state.store);
   const theme = createTheme({
     palette: {
       text: {
@@ -27,6 +29,7 @@ function App() {
   });
   return (
     <ThemeProvider theme={theme}>
+      {isLoading && <LoadingSpinner />}
       <Toaster position="top-center" reverseOrder={false} />
       <Routes>
         <Route
@@ -47,7 +50,6 @@ function App() {
         >
           <Route path="/" element={<Dashboard />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/add-product" element={<AddProduct />} />
         </Route>
       </Routes>
     </ThemeProvider>

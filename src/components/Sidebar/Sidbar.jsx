@@ -4,13 +4,10 @@ import MuiAppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
 import PersonIcon from "@mui/icons-material/Person";
 import InventoryIcon from "@mui/icons-material/Inventory";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 import {
   useMediaQuery,
   ListItem,
@@ -30,7 +27,6 @@ import { MobileScreenTabs } from "../MobileScreenTabs/MobileScreenTabs";
 const sidebarOptions = [
   { title: "User Details", icon: <PersonIcon />, url: "/" },
   { title: "Products", icon: <InventoryIcon />, url: "/products" },
-  { title: "Add Product", icon: <AddCircleIcon />, url: "/add-product" },
 ];
 
 const drawerWidth = 240;
@@ -80,7 +76,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export const Sidebar = () => {
-  const isLargeScreen = useMediaQuery("(min-width: 701px)");
+  const isLargeScreen = useMediaQuery("(min-width: 1000px)");
   const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);

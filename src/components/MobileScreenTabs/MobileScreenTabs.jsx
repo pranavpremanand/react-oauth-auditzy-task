@@ -5,7 +5,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import { useEffect } from "react";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 export const MobileScreenTabs = () => {
   const { pathname } = useLocation();
@@ -46,11 +45,6 @@ export const MobileScreenTabs = () => {
         icon={<InventoryIcon />}
         label="PRODUCTS"
         onClick={() => navigate("/products")}
-      />
-      <Tab
-        icon={<AddCircleIcon />}
-        label="ADD PRODUCT"
-        onClick={() => navigate("/add-product")}
       />
     </Tabs>
   );
