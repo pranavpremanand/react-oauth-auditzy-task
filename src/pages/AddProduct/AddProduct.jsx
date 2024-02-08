@@ -1,5 +1,11 @@
 import React, { useRef, useState } from "react";
-import { Box, TextField, Typography, Button, Form } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Typography,
+  Button,
+  useMediaQuery,
+} from "@mui/material";
 import { darken } from "@mui/material/styles";
 import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
@@ -27,6 +33,7 @@ const schema = z.object({
 });
 
 const AddProduct = () => {
+  const isLargeScreen = useMediaQuery("(min-width: 800px)");
   const [img, setImg] = useState("");
   const [formData, setFormData] = useState("");
   const imgRef = useRef();
@@ -66,7 +73,6 @@ const AddProduct = () => {
     }
   };
 
-
   // handle form submit click
   const handleFormSubmit = (values) => {
     console.log(values);
@@ -82,7 +88,7 @@ const AddProduct = () => {
       <form
         onSubmit={handleSubmit(handleFormSubmit)}
         style={{
-          width: "40vw",
+          width: isLargeScreen ? "40vw" : "100%",
           display: "flex",
           flexDirection: "column",
           gap: 10,

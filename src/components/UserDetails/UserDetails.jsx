@@ -1,19 +1,18 @@
 import React from "react";
-import { Box, Typography, Avatar } from "@mui/material";
+import { Box, Typography, Avatar, useMediaQuery } from "@mui/material";
 
 const UserDetails = ({ user }) => {
+  const isLargeScreen = useMediaQuery("(min-width: 800px)");
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         gap: 1,
-        width: "fit-content",
         borderRadius: 1,
-        py: 2,
-        pl: 2,
-        pr: 10,
-        m: 5,
+        py: 5,
+        pl: 5,
+        pr: isLargeScreen ? 20 :0,
         color: "text.primary",
         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.4)",
       }}
