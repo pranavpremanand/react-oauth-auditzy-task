@@ -8,23 +8,42 @@ body {
   margin: 0;
 }
 
-::-webkit-scrollbar{
-    display: none;
+::-webkit-scrollbar {
+  display: none;
+}
+
+.error-msg {
+  color: #db0000;
 }
 
 /* styles for mobile screen bottom tabs */
-.css-8p75qc-MuiTabs-root,.css-u438lk-MuiTabs-root {
+.css-8p75qc-MuiTabs-root,
+.css-u438lk-MuiTabs-root {
   width: 100%;
 }
-.css-heg063-MuiTabs-flexContainer,.css-k008qs {
+.css-heg063-MuiTabs-flexContainer,
+.css-k008qs {
   justify-content: space-evenly;
 }
 
 /* styles for product list table */
-.css-lof2az{
-    width: 95% !important;
-    margin-inline: auto !important;
+.css-lof2az {
+  width: 95% !important;
+  margin-inline: auto !important;
 }
-.css-t5z10y-MuiPaper-root-MuiTableContainer-root{
-    border:1px solid #d2dbdd;
+.css-t5z10y-MuiPaper-root-MuiTableContainer-root {
+  border: 1px solid #d2dbdd;
+}
+
+/* form styles */
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  width: 100%;
+}
+.css-14z9p8t-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline,
+.css-1reagu5-MuiFormLabel-root-MuiInputLabel-root.Mui-focused,
+.css-1ev2t2z-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: #0b3448 !important;
+  color: #0b3448 !important;
 }

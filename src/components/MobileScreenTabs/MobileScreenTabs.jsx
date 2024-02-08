@@ -1,11 +1,14 @@
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import { useEffect } from "react";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 export const MobileScreenTabs = () => {
+  const { pathname } = useLocation();
   const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
 
@@ -13,6 +16,10 @@ export const MobileScreenTabs = () => {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    if (pathname === "/") return setValue(0);
+    else return setValue(1);
+  }, [pathname]);
   return (
     <Tabs
       value={value}
@@ -30,8 +37,21 @@ export const MobileScreenTabs = () => {
         boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.4)",
       }}
     >
-      <Tab icon={<PersonIcon />} label="RECENTS" onClick={()=>navigate('/')}/>
-      <Tab icon={<InventoryIcon />} label="FAVORITES" onClick={()=>navigate('/products')} />
+      <Tab
+        icon={<PersonIcon />}
+        label="PROFILE"
+        onClick={() => navigate("/")}
+      />
+      <Tab
+        icon={<InventoryIcon />}
+        label="PRODUCTS"
+        onClick={() => navigate("/products")}
+      />
+      <Tab
+        icon={<AddCircleIcon />}
+        label="ADD PRODUCT"
+        onClick={() => navigate("/add-product")}
+      />
     </Tabs>
   );
 };

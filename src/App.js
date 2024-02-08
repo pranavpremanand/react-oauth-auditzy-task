@@ -6,6 +6,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Sidebar } from "./components/Sidebar/Sidbar";
 import Products from "./pages/Products/Products";
 import { ProtectRoute, PublicRoute } from "./components/ProtectRoutes";
+import AddProduct from "./pages/AddProduct/AddProduct";
+import {Toaster} from 'react-hot-toast'
 
 function App() {
   const theme = createTheme({
@@ -25,6 +27,7 @@ function App() {
   });
   return (
     <ThemeProvider theme={theme}>
+      <Toaster position="top-center" reverseOrder={false} />
       <Routes>
         <Route
           path="/login"
@@ -44,6 +47,7 @@ function App() {
         >
           <Route path="/" element={<Dashboard />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/add-product" element={<AddProduct />} />
         </Route>
       </Routes>
     </ThemeProvider>

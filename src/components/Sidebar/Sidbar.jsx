@@ -10,6 +10,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { Navbar } from "../Navbar/Navbar";
 import PersonIcon from "@mui/icons-material/Person";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import {
   useMediaQuery,
   ListItem,
@@ -29,6 +30,7 @@ import { MobileScreenTabs } from "../MobileScreenTabs/MobileScreenTabs";
 const sidebarOptions = [
   { title: "User Details", icon: <PersonIcon />, url: "/" },
   { title: "Products", icon: <InventoryIcon />, url: "/products" },
+  { title: "Add Product", icon: <AddCircleIcon />, url: "/add-product" },
 ];
 
 const drawerWidth = 240;
