@@ -76,7 +76,7 @@ export const ProductsList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products ? (
+            {products?.length > 0 ? (
               products.map((item, i) => (
                 <TableRow
                   key={item.id}

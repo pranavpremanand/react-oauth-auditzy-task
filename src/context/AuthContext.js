@@ -8,16 +8,20 @@ import {
 import { app, auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { collection, addDoc, query, where, getDocs, getFirestore } from "firebase/firestore";
+import {useDispatch} from 'react-redux'
+import { setLoading } from "../Redux/storeSlice";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   // google signin
   const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
+    dispatch(setLoading(true))
     try {
       const response = await signInWithPopup(auth, provider);
       if (response.user) {
@@ -34,6 +38,8 @@ export const AuthContextProvider = ({ children }) => {
       }
     } catch (err) {
       console.log("ERROR SIGNIN ::\n", err);
+    }finally{
+      dispatch(setLoading(false))
     }
   };
 
