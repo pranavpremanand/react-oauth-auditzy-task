@@ -12,8 +12,7 @@ function Login() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
-        bgcolor: "background.primary",
+        pt:15,
       }}
     >
       <GoogleButton onClick={googleSignIn} />

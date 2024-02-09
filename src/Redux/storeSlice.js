@@ -16,7 +16,7 @@ const storeSlice = createSlice({
       state.products = action.payload;
     },
     addProductItem: (state, action) => {
-      state.products = [...state.products,action.payload];
+      state.products = [action.payload,...state.products];
     },
     updateItem: (state, action) => {
       const index = state.products.findIndex(

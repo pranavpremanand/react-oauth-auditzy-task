@@ -20,10 +20,7 @@ const schema = z.object({
   title: z
     .string()
     .refine((val) => val.trim() !== "", { message: "Title is required" }),
-  price: z.preprocess(
-    (a) => parseInt(z.string().parse(a), 10),
-    z.number().positive().min(1)
-  ),
+  price: z.preprocess((a) => parseInt(a, 10), z.number().positive().min(1)),
   image: z.string({ required_error: "Image is required" }),
   category: z
     .string()

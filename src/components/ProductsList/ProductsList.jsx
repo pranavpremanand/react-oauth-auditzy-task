@@ -11,7 +11,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { deleteProduct } from "../../APIs";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteItem } from "../../Redux/storeSlice";
+import { deleteItem, setLoading } from "../../Redux/storeSlice";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useState } from "react";
 import { EditProductModal } from "../EditProductModal/EditProductModal";
@@ -42,17 +42,17 @@ export const ProductsList = () => {
 
   // delete product
   const deleteProductItem = async () => {
-    console.log(deletingProductId, "deletingProductId");
+    dispatch(setLoading(true));
     try {
-      const response = await deleteProduct(deletingProductId);
-      if (response.data) {
-        dispatch(deleteItem(deletingProductId));
-        toast.success("Product deleted successfully");
-        setShowDeleteModal(false);
-        setDeletingProductId("");
-      }
+      await deleteProduct(deletingProductId);
+      dispatch(deleteItem(deletingProductId));
+      toast.success("Product deleted successfully");
+      setShowDeleteModal(false);
+      setDeletingProductId("");
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
   return (

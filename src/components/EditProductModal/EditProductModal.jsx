@@ -14,17 +14,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { updateProduct, uploadImageToCloudinary } from "../../APIs";
 import { useDispatch } from "react-redux";
-import { updateItem } from "../../Redux/storeSlice";
+import { setLoading, updateItem } from "../../Redux/storeSlice";
 import { useEffect } from "react";
 
 const schema = z.object({
   title: z
     .string()
     .refine((val) => val.trim() !== "", { message: "Title is required" }),
-  price: z.preprocess(
-    (a) => parseInt(z.string().parse(a), 10),
-    z.number().positive().min(1)
-  ),
+  price: z.preprocess((a) => parseInt(a, 10), z.number().positive().min(1)),
   image: z.string({ required_error: "Image is required" }),
   category: z
     .string()
@@ -76,7 +73,7 @@ export const EditProductModal = ({ open, handleClose, product }) => {
   // set default values
   useEffect(() => {
     setValue("title", product.title);
-    setValue("price", product.price);
+    setValue("price", parseFloat(product.price));
     setValue("image", product.image);
     setValue("category", product.category);
     setValue("description", product.description);
@@ -124,6 +121,7 @@ export const EditProductModal = ({ open, handleClose, product }) => {
 
   // handle form submit click
   const handleFormSubmit = async (values) => {
+    dispatch(setLoading(true));
     try {
       values = { ...values, id: product.id };
       if (product.image !== img.image) {
@@ -131,7 +129,7 @@ export const EditProductModal = ({ open, handleClose, product }) => {
         if (uploadImgSuccess) {
           const response = await updateProduct(values);
           if (response.data) {
-            dispatch(updateItem(response.data));
+            dispatch(updateItem(values));
             reset();
             setImg("");
             handleClose();
@@ -150,6 +148,8 @@ export const EditProductModal = ({ open, handleClose, product }) => {
       }
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
   return (
@@ -279,10 +279,9 @@ export const EditProductModal = ({ open, handleClose, product }) => {
               </Button>
               <Button
                 type="button"
+                variant="contained"
+                color="inherit"
                 sx={{
-                  bgcolor: "text.secondary",
-                  color: "background.primary",
-                  "&:hover": { bgcolor: darken("#666", 0.3) },
                   width: "100%",
                 }}
                 onClick={handleClose}
