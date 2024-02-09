@@ -17,7 +17,7 @@ export const Navbar = ({ user }) => {
         py: 2,
       }}
     >
-      <AdminPanelSettingsIcon sx={{ fontSize: 55, color: "text.primary" }} />
+      <AdminPanelSettingsIcon sx={{ fontSize: 40, color: "text.primary" }} />
       <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
         <Tooltip
           title="Logout"
@@ -31,7 +31,7 @@ export const Navbar = ({ user }) => {
           onClick={logOut}
         >
           <IconButton>
-            <LogoutIcon sx={{fontSize:22}}/>
+            <LogoutIcon sx={{fontSize:20}}/>
           </IconButton>
         </Tooltip>
         <Avatar alt={user.displayName} src={user.photoURL} />

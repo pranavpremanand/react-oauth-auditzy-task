@@ -79,7 +79,7 @@ export const Sidebar = () => {
   const isLargeScreen = useMediaQuery("(min-width: 1000px)");
   const navigate = useNavigate();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(isLargeScreen ? true : false);
   const user = JSON.parse(sessionStorage.getItem("user_details"));
 
   const handleDrawerOpen = () => {
@@ -104,7 +104,7 @@ export const Sidebar = () => {
               edge="start"
               sx={{ mr: 2, ...(open && { display: "none" }) }}
             >
-              <MenuIcon sx={{color:'text.primary'}} />
+              <MenuIcon sx={{ color: "text.primary" }} />
             </IconButton>
           )}
           <Navbar user={user} />

@@ -125,8 +125,11 @@ export const ProductsList = () => {
                     />
                   </TableCell>
                   {!isSmallScreen && (
-                    <TableCell sx={{ maxWidth: 20 }} align="right">
-                      ₹{item.price}
+                    <TableCell
+                      sx={{ maxWidth: 20}}
+                      align="right"
+                    >
+                      {item.price}
                     </TableCell>
                   )}
                   {isLargeScreen && (

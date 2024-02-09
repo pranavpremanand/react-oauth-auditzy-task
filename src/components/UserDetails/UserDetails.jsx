@@ -12,14 +12,14 @@ const UserDetails = ({ user }) => {
         borderRadius: 1,
         py: 5,
         pl: 5,
-        pr: isLargeScreen ? 20 :0,
+        pr: isLargeScreen ? 20 : 0,
         color: "text.primary",
         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.4)",
       }}
     >
       <Typography
-        component="h3"
-        variant="span"
+        component="span"
+        variant="h5"
         sx={{ fontWeight: 500, textDecoration: "underline" }}
       >
         User Details
@@ -32,7 +32,7 @@ const UserDetails = ({ user }) => {
       <Typography component="h3" variant="span" sx={{ fontWeight: 500 }}>
         {user.displayName}
       </Typography>
-      <Typography component="h5" variant="span" sx={{ fontWeight: 500 }}>
+      <Typography component="h4" variant="span" sx={{ fontWeight: 500 }}>
         {user.email}
       </Typography>
     </Box>
