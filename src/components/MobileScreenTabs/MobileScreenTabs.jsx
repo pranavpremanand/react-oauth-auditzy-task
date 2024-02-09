@@ -29,6 +29,7 @@ export const MobileScreenTabs = () => {
         position: "fixed",
         width: "100%",
         bottom: 0,
+        zIndex:10,
         display: "flex",
         gridTemplateColumns: "1fr 1fr auto",
         justifyContent: "space-between",
